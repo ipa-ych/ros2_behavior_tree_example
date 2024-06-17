@@ -58,6 +58,9 @@ add_library(
   src/plugins/pong_received_executor_bt_node.cpp
   src/plugins/ping_bt_node.cpp
   src/plugins/log_status_bt_node.cpp
+  src/plugins/pubsub_bt_node.cpp
+  src/plugins/sub_bt_node.cpp
+  src/plugins/setNaviGoal_bt_node.cpp
   src/bt_ros_node.cpp
 )
 
