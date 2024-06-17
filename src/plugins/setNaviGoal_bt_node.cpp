@@ -28,6 +28,17 @@ namespace bt_ros_example
 
     BT::NodeStatus setNaviGoal::tick()
     {
+
+        auto input_x = getInput<double>("x");
+        auto input_y = getInput<double>("y");
+        auto input_w = getInput<double>("w");
+
+        if (!input_x || !input_y || !input_w) {
+            RCLCPP_ERROR(node_->get_logger(), "Failed to get x or y or w from input ports");
+            return BT::NodeStatus::FAILURE;
+        }
+
+
         if (!goal_sent_)
         {
             if (!action_client_->wait_for_action_server(std::chrono::seconds(10))) {
@@ -38,16 +49,20 @@ namespace bt_ros_example
             auto goal_msg = nav2_msgs::action::NavigateToPose::Goal();
             goal_msg.pose.header.frame_id = "map";
             goal_msg.pose.header.stamp = node_->now();
-            goal_msg.pose.pose.position.x = 1.0;  // Set desired goal position
-            goal_msg.pose.pose.position.y = 1.0;
-            goal_msg.pose.pose.orientation.w = 1.0;
+            // goal_msg.pose.pose.position.x = 1.0;  // Set desired goal position
+            // goal_msg.pose.pose.position.y = 1.0;
+            // goal_msg.pose.pose.orientation.w = 1.0;
+
+            goal_msg.pose.pose.position.x = input_x.value();  // Set desired goal position
+            goal_msg.pose.pose.position.y = input_y.value();
+            goal_msg.pose.pose.orientation.w = input_w.value();
 
             // Send the goal
             auto send_goal_options = rclcpp_action::Client<nav2_msgs::action::NavigateToPose>::SendGoalOptions();
             send_goal_options.result_callback = std::bind(&setNaviGoal::result_callback, this, std::placeholders::_1);
 
             action_client_->async_send_goal(goal_msg, send_goal_options);
-            RCLCPP_INFO(node_->get_logger(), "Goal Sent!");
+            RCLCPP_INFO(node_->get_logger(), "Goal Sent as: x=%f, y=%f, w=%f !", input_x.value(), input_y.value(), input_w.value());
             goal_sent_ = true;
             return BT::NodeStatus::RUNNING;
         }

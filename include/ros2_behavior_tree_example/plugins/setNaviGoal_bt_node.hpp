@@ -32,8 +32,9 @@ namespace bt_ros_example
         static BT::PortsList providedPorts()
         {
             return {
-                BT::InputPort<bool>("force_pong"),
-                BT::OutputPort<int32_t>("last_pong_id"),
+                BT::InputPort<double>("x"),
+                BT::InputPort<double>("y"),
+                BT::InputPort<double>("w"),
             };
         }
 
