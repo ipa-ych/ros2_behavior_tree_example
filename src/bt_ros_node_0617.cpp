@@ -7,6 +7,11 @@
 #include "ros2_behavior_tree_example/plugins/log_status_bt_node.hpp"
 
 #include "ros2_behavior_tree_example/plugins/pubsub_bt_node.hpp"
+#include "ros2_behavior_tree_example/plugins/sub_bt_node.hpp"
+
+#include "ros2_behavior_tree_example/plugins/setNaviGoal_bt_node.hpp"
+
+#include "ros2_behavior_tree_example/plugins/getYoloResult_bt_node.hpp"
 
 #include "behaviortree_cpp/blackboard.h"
 #include "rclcpp/publisher.hpp"
@@ -41,15 +46,19 @@ namespace bt_ros_example
         this->declare_parameter("ping_starter", true);
 
         // Declare the behavior tree default file
-        this->declare_parameter("behaviortree_file", "behavior_trees/ping_pong_no_decorator.xml");
+        this->declare_parameter("behaviortree_file", "behavior_trees/pubsub.xml");
 
         // Register Nodes into the Factory to generate a tree later
-        // factory_.registerNodeType<PongReceivedNode>("PongReceivedNode");
-        // factory_.registerNodeType<PongReceivedExecutorNode>("PongReceivedExecutorNode");
-        // factory_.registerNodeType<PingNode>("PingNode");
-        // factory_.registerNodeType<LogStatusNode>("LogStatusNode");
+        factory_.registerNodeType<PongReceivedNode>("PongReceivedNode");
+        factory_.registerNodeType<PongReceivedExecutorNode>("PongReceivedExecutorNode");
+        factory_.registerNodeType<PingNode>("PingNode");
+        factory_.registerNodeType<LogStatusNode>("LogStatusNode");
 
         factory_.registerNodeType<pubsubNode>("pubsubNode");
+        factory_.registerNodeType<subNode>("subNode");
+
+        factory_.registerNodeType<setNaviGoal>("setNaviGoal");
+        factory_.registerNodeType<getYoloResultNode>("getYoloResultNode");
     }
 
     BtRosNode::~BtRosNode()

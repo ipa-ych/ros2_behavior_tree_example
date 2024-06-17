@@ -28,6 +28,7 @@ find_package(nav_msgs REQUIRED)
 find_package(nav2_msgs REQUIRED)
 find_package(std_srvs REQUIRED)
 find_package(tf2_ros REQUIRED)
+find_package(yolov8_msgs REQUIRED)
 find_package(Boost COMPONENTS coroutine QUIET)
 
 set(dependencies 
@@ -42,6 +43,7 @@ set(dependencies
   std_srvs
   tf2_ros
   behaviortree_cpp
+  yolov8_msgs
 )
 
 set(executable_name behavior_tree_example)
@@ -61,6 +63,7 @@ add_library(
   src/plugins/pubsub_bt_node.cpp
   src/plugins/sub_bt_node.cpp
   src/plugins/setNaviGoal_bt_node.cpp
+  src/plugins/getYoloResult_bt_node.cpp
   src/bt_ros_node.cpp
 )
 

@@ -11,6 +11,8 @@
 
 #include "ros2_behavior_tree_example/plugins/setNaviGoal_bt_node.hpp"
 
+#include "ros2_behavior_tree_example/plugins/getYoloResult_bt_node.hpp"
+
 #include "behaviortree_cpp/blackboard.h"
 #include "rclcpp/publisher.hpp"
 
@@ -56,6 +58,7 @@ namespace bt_ros_example
         factory_.registerNodeType<subNode>("subNode");
 
         factory_.registerNodeType<setNaviGoal>("setNaviGoal");
+        factory_.registerNodeType<getYoloResultNode>("getYoloResultNode");
     }
 
     BtRosNode::~BtRosNode()
