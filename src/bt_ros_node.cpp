@@ -13,6 +13,9 @@
 
 #include "ros2_behavior_tree_example/plugins/getYoloResult_bt_node.hpp"
 
+#include "ros2_behavior_tree_example/plugins/callStdSrvsEmpty_bt_node.hpp"
+#include "ros2_behavior_tree_example/plugins/callStdSrvsTrigger_bt_node.hpp"
+
 #include "behaviortree_cpp/blackboard.h"
 #include "rclcpp/publisher.hpp"
 
@@ -59,6 +62,9 @@ namespace bt_ros_example
 
         factory_.registerNodeType<setNaviGoal>("setNaviGoal");
         factory_.registerNodeType<getYoloResultNode>("getYoloResultNode");
+
+        factory_.registerNodeType<callStdSrvEmpty>("callStdSrvEmpty");
+        factory_.registerNodeType<callStdSrvTrigger>("callStdSrvTrigger");
     }
 
     BtRosNode::~BtRosNode()

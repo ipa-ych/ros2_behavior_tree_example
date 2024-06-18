@@ -64,6 +64,8 @@ add_library(
   src/plugins/sub_bt_node.cpp
   src/plugins/setNaviGoal_bt_node.cpp
   src/plugins/getYoloResult_bt_node.cpp
+  src/plugins/callStdSrvsEmpty_bt_node.cpp
+  src/plugins/callStdSrvsTrigger_bt_node.cpp
   src/bt_ros_node.cpp
 )
 
