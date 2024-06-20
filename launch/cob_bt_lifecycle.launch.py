@@ -15,8 +15,16 @@ def generate_launch_description():
     behavior_tree_dir = package_dir / 'behavior_trees'
 
     # limit choices so we can only have available files
-    mode_choices = ["cob_sim", "cob_robot"]
-    tree_choices = ["combi_test.xml", "light_mimic_test.xml", "sim_test.xml", "simple_srvs_test.xml"]   # add new BTs here
+    mode_choices = ["cob_sim",
+                    "cob_robot"]
+    
+    tree_choices = ["combi_test.xml", 
+                    "combi_test_with_Navi_sim.xml", 
+                    "light_mimic_test.xml", 
+                    "sim_test.xml", 
+                    "simple_srvs_test.xml", 
+                    "sound_test.xml"]   # add new BTs here
+    
     enable_choices = ["True", "False"]
 
     node_enable_arg = DeclareLaunchArgument("node_enable", 
@@ -41,6 +49,7 @@ def generate_launch_description():
         package='ros2_behavior_tree_example',
         executable='behavior_tree_example',
         name='bt_lifecycle_node',
+        # prefix='xterm -e',
         output='screen',
         parameters=[{
             "rate_hz" : 1.0,

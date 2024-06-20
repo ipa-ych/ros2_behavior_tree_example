@@ -15,6 +15,7 @@
 
 #include "ros2_behavior_tree_example/plugins/callStdSrvsEmpty_bt_node.hpp"
 #include "ros2_behavior_tree_example/plugins/callStdSrvsTrigger_bt_node.hpp"
+#include "ros2_behavior_tree_example/plugins/callCobSrvsSetString_bt_node.hpp"
 
 #include "behaviortree_cpp/blackboard.h"
 #include "rclcpp/publisher.hpp"
@@ -65,6 +66,7 @@ namespace bt_ros_example
 
         factory_.registerNodeType<callStdSrvEmpty>("callStdSrvEmpty");
         factory_.registerNodeType<callStdSrvTrigger>("callStdSrvTrigger");
+        factory_.registerNodeType<callCobSrvSetString>("callCobSrvSetString");
     }
 
     BtRosNode::~BtRosNode()

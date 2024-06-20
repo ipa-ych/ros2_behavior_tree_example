@@ -3,6 +3,7 @@
         <Sequence>
             <callStdSrvTrigger name="setLightGreen" service_name="/behavior/setLightGreen"/>
             <callStdSrvTrigger name="setLightRed" service_name="/behavior/setLightRed"/>
+            <!-- <callStdSrvTrigger name="setLightGreen" service_name="/behavior/setLightGreen"/> -->
             <callStdSrvTrigger name="setLightCyan" service_name="/behavior/setLightCyan"/>
             <callStdSrvTrigger name="setLightCyanBreath" service_name="/behavior/setLightCyanBreath"/>
             <callStdSrvTrigger name="setMimicAfraid" service_name="/behavior/setMimicAfraid"/>
